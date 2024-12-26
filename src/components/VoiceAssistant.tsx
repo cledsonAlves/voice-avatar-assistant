@@ -19,10 +19,10 @@ export const VoiceAssistant = () => {
     try {
       setIsListening(true);
       await conversation.startSession({
-        agentId: "your-agent-id", // You'll need to replace this with your actual agent ID
+        agentId: "your-agent-id", // Você precisará substituir isso com seu ID de agente
       });
     } catch (error) {
-      console.error('Error starting conversation:', error);
+      console.error('Erro ao iniciar conversa:', error);
       setIsListening(false);
     }
   };
@@ -32,17 +32,17 @@ export const VoiceAssistant = () => {
       await conversation.endSession();
       setIsListening(false);
     } catch (error) {
-      console.error('Error ending conversation:', error);
+      console.error('Erro ao encerrar conversa:', error);
     }
   };
 
   useEffect(() => {
-    // Request microphone permission when component mounts
+    // Solicitar permissão do microfone quando o componente montar
     navigator.mediaDevices.getUserMedia({ audio: true })
-      .catch((error) => console.error('Error accessing microphone:', error));
+      .catch((error) => console.error('Erro ao acessar microfone:', error));
 
     return () => {
-      // Cleanup
+      // Limpeza
       conversation.endSession().catch(console.error);
     };
   }, []);
@@ -60,7 +60,7 @@ export const VoiceAssistant = () => {
               onClick={isListening ? handleStopConversation : handleStartConversation}
               variant={isListening ? "destructive" : "default"}
             >
-              {isListening ? "Stop Listening" : "Start Listening"}
+              {isListening ? "Parar de Escutar" : "Começar a Escutar"}
             </Button>
           </div>
         </div>
