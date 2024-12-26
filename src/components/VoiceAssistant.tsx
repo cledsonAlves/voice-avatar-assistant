@@ -21,7 +21,11 @@ const fraseDoDia = [
 export const VoiceAssistant = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isListening, setIsListening] = useState(false);
-  const conversation = useConversation();
+  const conversation = useConversation({
+    voiceId: "pNInz6obpgDQGcFmaJgB", // ID da voz "Rachel"
+    apiKey: process.env.ELEVEN_LABS_API_KEY,
+    model: "eleven_multilingual_v2"
+  });
   
   const getFraseDoDia = () => {
     const randomIndex = Math.floor(Math.random() * fraseDoDia.length);
@@ -31,9 +35,7 @@ export const VoiceAssistant = () => {
   const handleStartConversation = async () => {
     try {
       setIsListening(true);
-      await conversation.startSession({
-        agentId: "your-agent-id", // Você precisará substituir isso com seu ID de agente
-      });
+      await conversation.startSession();
       
       // Adiciona a mensagem de apresentação e frase do dia
       const frase = getFraseDoDia();
