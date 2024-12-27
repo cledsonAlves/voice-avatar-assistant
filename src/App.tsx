@@ -14,7 +14,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename="/voice-avatar-assistant/src">
         <Routes>
-          <Route path="/voice-avatar-assistant/src" element={<Index />} />
+          <Route path="/" element={<Index />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
