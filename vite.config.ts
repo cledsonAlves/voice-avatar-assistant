@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/voice-avatar-assistant/", // Substitua pelo nome do repositório
+ // base: "/voice-avatar-assistant/", // Substitua pelo nome do repositório
   server: {
     host: "::",
     port: 8080,
