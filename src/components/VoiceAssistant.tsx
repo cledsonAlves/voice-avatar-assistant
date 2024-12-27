@@ -10,42 +10,17 @@ interface Message {
   content: string;
 }
 
-const fraseDoDia = [
-  "A vida é como um eco: você recebe de volta aquilo que emite.",
-  "Cada novo dia é uma nova oportunidade para ser melhor.",
-  "A felicidade não é algo pronto. Ela vem de suas próprias ações.",
-  "O sucesso é a soma de pequenos esforços repetidos dia após dia.",
-  "Seja a mudança que você quer ver no mundo."
-];
-
 export const VoiceAssistant = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isListening, setIsListening] = useState(false);
-  const conversation = useConversation({
-    voiceId: "pNInz6obpgDQGcFmaJgB", // ID da voz "Rachel"
-    apiKey: process.env.ELEVEN_LABS_API_KEY,
-    model: "eleven_multilingual_v2"
-  });
+  const conversation = useConversation();
   
-  const getFraseDoDia = () => {
-    const randomIndex = Math.floor(Math.random() * fraseDoDia.length);
-    return fraseDoDia[randomIndex];
-  };
-
   const handleStartConversation = async () => {
     try {
       setIsListening(true);
-      await conversation.startSession();
-      
-      // Adiciona a mensagem de apresentação e frase do dia
-      const frase = getFraseDoDia();
-      const mensagemInicial = `Olá! Eu sou Iara, sua assistente virtual. Estou aqui para ajudar você! \n\nFrase do dia: "${frase}"`;
-      
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: mensagemInicial
-      }]);
-      
+      await conversation.startSession({
+        agentId: "your-agent-id", // Você precisará substituir isso com seu ID de agente
+      });
     } catch (error) {
       console.error('Erro ao iniciar conversa:', error);
       setIsListening(false);
