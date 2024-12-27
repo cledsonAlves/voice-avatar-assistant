@@ -9,7 +9,10 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-     "deploy": "aws s3 sync ./dist s3://iaravoz --delete"
+    "homepage": "https://cledsonAlves.github.io/voice-avatar-assistant",
+    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@11labs/react": "^0.0.4",
@@ -75,6 +78,7 @@
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
+    "gh-pages": "^6.2.0",
     "globals": "^15.9.0",
     "lovable-tagger": "^1.0.19",
     "postcss": "^8.4.47",
