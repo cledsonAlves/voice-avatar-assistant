@@ -12,7 +12,7 @@
     "homepage": "https://cledsonAlves.github.io/voice-avatar-assistant",
     "start": "react-scripts start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@11labs/react": "^0.0.4",
