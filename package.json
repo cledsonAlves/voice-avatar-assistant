@@ -9,7 +9,7 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "homepage": "https://cledsonAlves.github.io/voice-avatar-assistant",
+    "homepage": "/voice-avatar-assistant",
     "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
