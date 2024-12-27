@@ -18,7 +18,6 @@ export const Avatar: React.FC<AvatarProps> = ({ isSpeaking, isListening }) => {
         repeat: isSpeaking ? Infinity : 0,
       }}
     >
-      {/* Cabeça */}
       <motion.svg
         viewBox="0 0 100 160"
         className="w-full h-full"
@@ -26,58 +25,88 @@ export const Avatar: React.FC<AvatarProps> = ({ isSpeaking, isListening }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Crânio */}
-        <motion.circle
-          cx="50"
-          cy="30"
-          r="20"
+        {/* Cabeça Robótica */}
+        <motion.path
+          d="M30 10 L70 10 L70 40 L30 40 Z"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="text-primary"
+        />
+        
+        {/* Antenas */}
+        <motion.path
+          d="M40 10 L35 0 M60 10 L65 0"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          className="text-primary"
+        />
+
+        {/* Pescoço Mecânico */}
+        <motion.path
+          d="M40 40 L40 50 L60 50 L60 40"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
           className="text-primary"
         />
 
-        {/* Pescoço */}
-        <motion.line
-          x1="50"
-          y1="50"
-          x2="50"
-          y2="60"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-primary"
-        />
-
-        {/* Corpo */}
+        {/* Corpo Robótico */}
         <motion.path
-          d="M30 60 L50 100 L70 60"
+          d="M30 50 L70 50 L75 100 L25 100 Z"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
           className="text-primary"
         />
 
-        {/* Braços */}
+        {/* Detalhes do Corpo */}
         <motion.path
-          d="M30 65 L20 85 M70 65 L80 85"
+          d="M35 60 L65 60 M35 70 L65 70 M35 80 L65 80"
+          stroke="currentColor"
+          strokeWidth="1"
+          className="text-primary"
+        />
+
+        {/* Braços Robóticos */}
+        <motion.path
+          d="M25 55 L15 70 L20 90 M75 55 L85 70 L80 90"
           stroke="currentColor"
           strokeWidth="2"
           className="text-primary"
         />
 
-        {/* Pernas */}
+        {/* Pernas Robóticas */}
         <motion.path
-          d="M50 100 L40 140 M50 100 L60 140"
+          d="M35 100 L30 120 L35 140 M65 100 L70 120 L65 140"
           stroke="currentColor"
           strokeWidth="2"
           className="text-primary"
         />
 
-        {/* Círculo de energia */}
+        {/* Juntas das Pernas */}
+        <motion.circle cx="30" cy="120" r="2" className="fill-current text-primary" />
+        <motion.circle cx="70" cy="120" r="2" className="fill-current text-primary" />
+
+        {/* Olhos LED */}
+        <motion.g
+          animate={{
+            scale: isSpeaking ? [1, 1.1, 1] : 1,
+          }}
+          transition={{
+            duration: 0.3,
+            repeat: isSpeaking ? Infinity : 0,
+          }}
+        >
+          <rect x="38" y="20" width="8" height="4" className="fill-current text-primary" />
+          <rect x="54" y="20" width="8" height="4" className="fill-current text-primary" />
+        </motion.g>
+
+        {/* Círculo de Energia */}
         {(isSpeaking || isListening) && (
           <motion.circle
             cx="50"
-            cy="30"
+            cy="75"
             r="25"
             fill="none"
             stroke="currentColor"
@@ -94,20 +123,6 @@ export const Avatar: React.FC<AvatarProps> = ({ isSpeaking, isListening }) => {
             }}
           />
         )}
-
-        {/* Olhos */}
-        <motion.g
-          animate={{
-            scale: isSpeaking ? [1, 1.1, 1] : 1,
-          }}
-          transition={{
-            duration: 0.3,
-            repeat: isSpeaking ? Infinity : 0,
-          }}
-        >
-          <circle cx="43" cy="25" r="2" className="fill-current text-primary" />
-          <circle cx="57" cy="25" r="2" className="fill-current text-primary" />
-        </motion.g>
       </motion.svg>
 
       {/* Indicador de status */}
