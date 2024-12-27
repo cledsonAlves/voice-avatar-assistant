@@ -10,17 +10,17 @@ interface AvatarSelectionProps {
 
 const assistants = [
   {
-    id: "9sFroVSgPhgpGak8Jygu",
+    id: "4ALtSoSoFKj5Z0z9i3mO",
     name: "Iara",
     color: "from-blue-500 to-purple-500"
   },
   {
-    id: "another_assistant_id_1", // Replace with actual assistant ID
+    id: "mesRcALu2ztGZxz5iS2A", // Replace with actual assistant ID
     name: "Iago",
     color: "from-green-500 to-teal-500"
   },
   {
-    id: "another_assistant_id_2", // Replace with actual assistant ID
+    id: "6W83Ehbujw8uzV5kOMFr", // Replace with actual assistant ID
     name: "Cledson Virtual",
     color: "from-orange-500 to-red-500"
   }
