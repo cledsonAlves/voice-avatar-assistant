@@ -1,15 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 interface AvatarProps {
   isSpeaking: boolean;
   isListening: boolean;
+  assistantId: string;
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ isSpeaking, isListening }) => {
+const getAvatarColors = (assistantId: string) => {
+  switch (assistantId) {
+    case "9sFroVSgPhgpGak8Jygu":
+      return "from-blue-500 to-purple-500";
+    case "another_assistant_id_1":
+      return "from-green-500 to-teal-500";
+    case "another_assistant_id_2":
+      return "from-orange-500 to-red-500";
+    default:
+      return "from-primary to-secondary";
+  }
+};
+
+export const Avatar: React.FC<AvatarProps> = ({ isSpeaking, isListening, assistantId }) => {
+  const gradientColors = getAvatarColors(assistantId);
+  
   return (
     <motion.div
-      className="w-32 h-32 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center"
+      className={cn(
+        "w-32 h-32 rounded-full bg-gradient-to-r flex items-center justify-center",
+        gradientColors
+      )}
       animate={{
         scale: isSpeaking ? [1, 1.1, 1] : 1,
       }}
@@ -19,15 +39,19 @@ export const Avatar: React.FC<AvatarProps> = ({ isSpeaking, isListening }) => {
       }}
     >
       <div className="relative">
-        {/* Base circle */}
         <div className="w-24 h-24 rounded-full bg-white/90 flex items-center justify-center">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20" />
+          <div className={cn(
+            "w-16 h-16 rounded-full bg-gradient-to-r",
+            gradientColors.replace("500", "200")
+          )} />
         </div>
         
-        {/* Animation rings */}
         {(isSpeaking || isListening) && (
           <motion.div
-            className="absolute inset-0 rounded-full border-4 border-primary/30"
+            className={cn(
+              "absolute inset-0 rounded-full border-4",
+              gradientColors.replace("500", "300")
+            )}
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.5, 0.2, 0.5],
