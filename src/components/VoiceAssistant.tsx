@@ -19,7 +19,7 @@ export const VoiceAssistant = () => {
     try {
       setIsListening(true);
       await conversation.startSession({
-        agentId: "your-agent-id", // Você precisará substituir isso com seu ID de agente
+        agentId: "9sFroVSgPhgpGak8Jygu", // Você precisará substituir isso com seu ID de agente
       });
     } catch (error) {
       console.error('Erro ao iniciar conversa:', error);
