@@ -8,7 +8,8 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+     "deploy": "aws s3 sync ./dist s3://iaravoz --delete"
   },
   "dependencies": {
     "@11labs/react": "^0.0.4",
